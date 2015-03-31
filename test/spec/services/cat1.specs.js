@@ -23,10 +23,10 @@ describe('Service: cat', function () {
   }));
 
   it('should fire the weapon and' +
-  'return a success status', inject(function ($timeout) {
+  'return a success status', inject(function ($rootScope) {
     var spy = jasmine.createSpy();
     cat.fireWeapon().then(spy);
-    $timeout.flush();
+    $rootScope.$digest();
     expect(spy).toHaveBeenCalledWith('Cat successfully shot a weapon');
   }));
 

@@ -9,7 +9,7 @@ Slides can be found [here](https://slides.com/nadav/how-not-to-test-your-angular
 
 ### How to install TADA ###
 
-`brew install tada --save`
+`brew install tada --save-dev`
 
 
 ### How to run the example tests ###

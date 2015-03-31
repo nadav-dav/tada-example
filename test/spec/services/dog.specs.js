@@ -2,7 +2,7 @@
 
 describe('Service: dog', function () {
   var $q;
-  var $timeout;
+  var $rootScope;
   var dog;
   var fireWeaponSuccessful = true;
 
@@ -23,17 +23,17 @@ describe('Service: dog', function () {
     });
   });
 
-  beforeEach(inject(function (Dog, _$q_, _$timeout_, WeaponMock) {
+  beforeEach(inject(function (Dog, _$q_, _$rootScope_, WeaponMock) {
     dog = new Dog(new WeaponMock());
     $q = _$q_;
-    $timeout = _$timeout_;
+    $rootScope = _$rootScope_;
   }));
 
   it('should fire the weapon and' +
   'return a success status', function () {
     var spy = jasmine.createSpy();
     dog.fireWeapon().then(spy);
-    $timeout.flush();
+    $rootScope.$digest();
     expect(spy).toHaveBeenCalledWith('Dog successfully shot a weapon');
   });
 
@@ -41,7 +41,7 @@ describe('Service: dog', function () {
     fireWeaponSuccessful = false;
     var spy = jasmine.createSpy();
     dog.fireWeapon().then(spy);
-    $timeout.flush();
+    $rootScope.$digest();
     expect(spy)
       .toHaveBeenCalledWith('Dog failed to shoot weapon');
   });
