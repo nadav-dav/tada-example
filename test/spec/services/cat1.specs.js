@@ -7,7 +7,7 @@ describe('Service: cat', function () {
   beforeEach(function () {
     module('catWarsApp');
     module({
-      WeaponStub: function () {
+      WeaponMock: function () {
         this.fire = function () {
           var defer = $q.defer();
           defer.resolve('successfully shot a weapon');
@@ -17,8 +17,8 @@ describe('Service: cat', function () {
     });
   });
 
-  beforeEach(inject(function (Cat, _$q_, WeaponStub) {
-    cat = new Cat(new WeaponStub());
+  beforeEach(inject(function (Cat, _$q_, WeaponMock) {
+    cat = new Cat(new WeaponMock());
     $q = _$q_;
   }));
 

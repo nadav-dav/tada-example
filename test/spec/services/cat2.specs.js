@@ -9,7 +9,7 @@ describe('Service: cat', function () {
   beforeEach(function () {
     module('catWarsApp');
     module({
-      WeaponStub: function () {
+      WeaponMock: function () {
         this.fire = function () {
           var defer = $q.defer();
           if (fireWeaponSuccessful) {
@@ -23,8 +23,8 @@ describe('Service: cat', function () {
     });
   });
 
-  beforeEach(inject(function (Cat, _$q_, _$timeout_, WeaponStub) {
-    cat = new Cat(new WeaponStub());
+  beforeEach(inject(function (Cat, _$q_, _$timeout_, WeaponMock) {
+    cat = new Cat(new WeaponMock());
     $q = _$q_;
     $timeout = _$timeout_;
   }));
